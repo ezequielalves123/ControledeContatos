@@ -1,0 +1,71 @@
+﻿@model ContatoModel
+@{
+    ViewData["Title"] = "Editar Contato";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white text-center py-4 border-0">
+                    <h2 class="mb-0 fw-bold"><i class="bi bi-pencil-square me-2"></i>Editar Contato</h2>
+                    <p class="small mb-0 opacity-75">Atualize as informações do registro #@Model.id</p>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <form asp-controller="Contato" asp-action="Alterar" method="post">
+
+                        <input type="hidden" asp-for="id" />
+
+                        <div class="mb-4">
+                            <label asp-for="nome" class="form-label fw-semibold text-secondary">Nome Completo</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
+                                <input type="text" asp-for="nome" class="form-control border-start-0 bg-light" placeholder="Digite o nome">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="email" class="form-label fw-semibold text-secondary">E-mail</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                                <input type="email" asp-for="email" class="form-control border-start-0 bg-light" placeholder="nome@email.com">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="celular" class="form-label fw-semibold text-secondary">Celular</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-phone"></i></span>
+                                <input type="text" asp-for="celular" class="form-control border-start-0 bg-light" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-5">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill shadow-sm">
+                                <i class="bi bi-arrow-repeat me-2"></i>Salvar Alterações
+                            </button>
+                            <a class="btn btn-outline-secondary btn-sm rounded-pill border-0" asp-controller="Contato" asp-action="Index">
+                                <i class="bi bi-x-circle me-1"></i>Cancelar e Voltar
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilo para focar nos campos */
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #198754; /* Cor de sucesso (verde) */
+        background-color: #fff !important;
+    }
+
+    .input-group-text {
+        color: #6c757d;
+    }
+</style>
