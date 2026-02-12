@@ -20,6 +20,7 @@
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-person"></i></span>
                                 <input type="text" asp-for="nome" class="form-control border-start-0 bg-light" placeholder="Ex: João Silva">
+                                @Html.ValidationMessageFor(x => x.nome)
                             </div>
                         </div>
 
@@ -28,6 +29,7 @@
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
                                 <input type="email" asp-for="email" class="form-control border-start-0 bg-light" placeholder="joao@email.com">
+                                @Html.ValidationMessageFor(x => x.email)
                             </div>
                         </div>
 
@@ -36,6 +38,7 @@
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-whatsapp"></i></span>
                                 <input type="text" asp-for="celular" class="form-control border-start-0 bg-light" placeholder="(00) 00000-0000">
+                                @Html.ValidationMessageFor(x => x.celular)
                             </div>
                         </div>
 
