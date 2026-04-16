@@ -13,6 +13,7 @@ string connectionString = builder.Configuration.GetConnectionString("DataBase");
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<BancoContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 // --- FIM DO TRECHO ---
 
 builder.Services.AddControllersWithViews();

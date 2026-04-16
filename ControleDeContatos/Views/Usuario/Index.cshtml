@@ -1,15 +1,15 @@
-﻿@model List<ContatoModel>
+﻿@model List<UsuarioModel>
 @{
-    ViewData["Title"] = "Listagem de Usuario";
+    ViewData["Title"] = "Listagem de Usuários";
 }
 
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h2 class="fw-bold text-dark mb-0">Listagem de Contatos</h2>
+            <h2 class="fw-bold text-dark mb-0">Listagem de Usuários</h2>
             <p class="text-muted small">Gerencie seus usáarios cadastrados no sistema</p>
         </div>
-        <a class="btn btn-primary rounded-pill px-4 shadow-sm" role="button" asp-controller="Contato" asp-action="Criar">
+        <a class="btn btn-primary rounded-pill px-4 shadow-sm" role="button" asp-controller="Usuario" asp-action="Criar">
             <i class="bi bi-person-plus-fill me-2"></i>Novo Usuario
         </a>
     </div>
@@ -34,38 +34,35 @@
     <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover mb-0" id="table-contatos">
+                <table class="table table-hover mb-0" id="table-usuarios">
                     <thead class="bg-light">
                         <tr>
                             <th scope="col" class="ps-4 py-3 text-secondary text-uppercase small fw-bold">ID</th>
                             <th scope="col" class="py-3 text-secondary text-uppercase small fw-bold">Nome</th>
+                            <th scope="col" class="py-3 text-secondary text-uppercase small fw-bold">Login</th>
                             <th scope="col" class="py-3 text-secondary text-uppercase small fw-bold">E-mail</th>
-                            <th scope="col" class="py-3 text-secondary text-uppercase small fw-bold">Celular</th>
-                            <th scope="col" class="py-3 text-center text-secondary text-uppercase small fw-bold">Ações</th>
+                            <th scope="col" class="py-3 text-center text-secondary text-uppercase small fw-bold">Data de cadastro</th>
+                            <th scope="col" class="py-3 text-center text-secondary text-uppercase small fw-bold"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (Model != null && Model.Any())
                         {
-                            foreach (ContatoModel contato in Model)
+                            foreach (UsuarioModel usuario in Model)
                             {
                                 <tr class="align-middle">
-                                    <td class="ps-4 fw-bold text-secondary">@contato.id</td>
-                                    <td class="fw-semibold text-dark">@contato.nome</td>
-                                    <td>
-                                        <span class="text-muted"><i class="bi bi-envelope me-2"></i>@contato.email</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-light text-dark border fw-normal">
-                                            <i class="bi bi-phone me-1 text-primary"></i>@contato.celular
-                                        </span>
-                                    </td>
+                                    <td class="ps-4 fw-bold text-secondary">@usuario.Id</td>
+                                    <td class="fw-semibold text-dark">@usuario.Nome</td
+                                           <td class="fw-semibold text-dark">@usuario.Login</td>
+                                           <td class="fw-semibold text-dark">@usuario.Email</td>
+                                           <td class="fw-semibold text-dark">@usuario.DataCadastro</td>
+                                   
                                     <td class="text-center pe-4">
                                         <div class="btn-group shadow-sm rounded">
-                                            <a role="button" class="btn btn-sm btn-outline-primary" asp-route-id="@contato.id" asp-controller="Contato" asp-action="Editar" title="Editar">
+                                            <a role="button" class="btn btn-sm btn-outline-primary" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar" title="Editar">
                                                 <i class="bi bi-pencil-square"></i> Editar
                                             </a>
-                                            <a role="button" class="btn btn-sm btn-outline-danger" asp-route-id="@contato.id" asp-controller="Contato" asp-action="ApagarConfirmacao" title="Excluir">
+                                            <a role="button" class="btn btn-sm btn-outline-danger" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfirmacao" title="Excluir">
                                                 <i class="bi bi-trash3-fill"></i> Apagar
                                             </a>
                                         </div>
@@ -79,7 +76,7 @@
                                 <td colspan="5" class="text-center py-5">
                                     <div class="text-muted">
                                         <i class="bi bi-people shadow-sm p-3 rounded-circle d-inline-block mb-3" style="font-size: 2rem; background-color: #f8f9fa;"></i>
-                                        <p class="mb-0">Nenhum contato encontrado no banco de dados.</p>
+                                        <p class="mb-0">Nenhum Usuário encontrado no banco de dados.</p>
                                     </div>
                                 </td>
                             </tr>
