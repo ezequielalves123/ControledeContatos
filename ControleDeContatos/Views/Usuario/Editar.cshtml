@@ -1,7 +1,7 @@
 ﻿@using ControleDeContatos.Enums
 @model UsuarioModel
 @{
-    ViewData["Title"] = "Novo Usuário";
+    ViewData["Title"] = "EditarUsuário";
 }
 
 <div class="container py-5">
@@ -9,13 +9,14 @@
         <div class="col-md-6 col-lg-5">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header bg-primary text-white text-center py-4 border-0">
-                    <h2 class="mb-0 fw-bold"><i class="bi bi-person-plus-fill me-2"></i>Cadastrar Usuário</h2>
+                    <h2 class="mb-0 fw-bold"><i class="bi bi-person-plus-fill me-2"></i>Editar Usuário</h2>
                     <p class="small mb-0 opacity-75">Preencha as informações abaixo para salvar</p>
                 </div>
 
                 <div class="card-body p-4 p-md-5">
-                    <form asp-controller="Usuario" asp-action="Criar" method="post">
 
+                    <form asp-controller="Usuario" asp-action="Criar" method="post">
+                        <input type="hidden" name="name" value="" asp-for="Id" />
                         <div class="mb-4">
                             <label asp-for="Nome" class="form-label fw-semibold text-secondary">Nome Completo</label>
                             <div class="input-group">
@@ -49,25 +50,18 @@
                                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-whatsapp"></i></span>
                                
                                 <select asp-for="Perfil"  >
-                                   <option value="0"></option>
+                                   <option value=""></option>
                                     <option value="@PerfilEnum.Admin">Administrador</option>
                                     <option value="@PerfilEnum.Padrao">Padrão</option>
 </select>
+                                @Html.ValidationMessageFor(x => x.Perfil)
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label asp-for="Senha" class="form-label fw-semibold text-secondary">Senha</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-whatsapp"></i></span>
-                                <input type="text" asp-for="Senha" class="form-control border-start-0 bg-light" placeholder="digite a senha do Usuário">
-                                @Html.ValidationMessageFor(x => x.Senha)
-                            </div>
-                        </div>
-
+                      
                         <div class="d-grid gap-2 mt-5">
                             <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow-sm">
-                                <i class="bi bi-check-circle-fill me-2"></i>Salvar Usuario 
+                                <i class="bi bi-check-circle-fill me-2"></i>Editar Usuário 
                             </button>
                             <a class="btn btn-outline-secondary btn-sm rounded-pill border-0" asp-controller="Usuario" asp-action="Index">
                                 <i class="bi bi-arrow-left me-1"></i>Voltar para a listagem

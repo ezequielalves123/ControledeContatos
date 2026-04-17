@@ -59,7 +59,7 @@ namespace ControleDeContatos.Repositorio
 
         public UsuarioModel BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Id == id);
         }
     }
 }
